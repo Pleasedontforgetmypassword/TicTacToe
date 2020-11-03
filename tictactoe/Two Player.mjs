@@ -32,9 +32,9 @@ const Check = () => {
 // Gets the image turn
 const Switch_Turn = con => {
     if (con){
-        return "../Players/X turn (2).png"
+        return "./Players/X turn (2).png"
     }else{
-        return "../Players/O turn (2).png"
+        return "./Players/O turn (2).png"
     }
 }
 
