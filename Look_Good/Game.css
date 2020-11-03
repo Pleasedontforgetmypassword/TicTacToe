@@ -1,0 +1,129 @@
+:root {
+    --Box-Size: 260px;
+}
+.Game {
+    height: 1140px;
+    width: 950px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Inside_Game {
+    position: relative;
+    height: 1090px;
+    width: 900px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Inside_Game .Board {
+    height: 900px;
+    width: 900px;
+    background-color: 	#606060;
+    display: table;
+    border-spacing: 30px;
+    box-shadow: 10px 10px 5px #383838;
+}
+.Board .Row{
+    display: table-row;
+}
+.Inside_Game .Bottom {
+    height: 165px;
+    width: 900px;
+    position: absolute;
+    bottom: 0;
+}
+.Bottom .Scores {
+    float: left;
+    position: relative;
+    height: 165px;
+    background-color: #606060;
+    width: 690px;
+    box-shadow: 10px 10px 5px #383838;
+}
+.Bottom .Scores .Info {
+    position: relative;
+    width: 665px;
+    height: 140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Scores .Info table, tr, td, th {
+    color: whitesmoke;
+    text-align: center;
+}
+.Info table {
+    width: 510px;
+    height: 140px;
+}
+.Info table th {
+    font-weight: bold;
+    font-size: 25px;
+}
+.Info table tr {
+    font-size: 25px;
+}
+.Info table tr {
+    background-color: 	#606060;
+}
+.Info table tr:nth-child(even) {
+    background-color: #808080;
+}
+.Scores .Info .Resets {
+    height: 140px;
+    width: 140px;
+    float: right;
+    text-align: center;
+    font-size: 42px;
+    overflow: hidden;
+    transition-duration: 0.8s;
+    transition-property: transform;
+}
+.Scores .Info .Resets:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+.Scores .Info .Counter {
+    float: left;
+    width:  510px;
+    height: 140px;
+}
+.Bottom .Turn {
+    position: relative;
+    float: right;
+    height: 165px;
+    background-color: #606060;
+    width: 165px;
+    box-shadow: 10px 10px 5px #383838;
+}
+.Turn #Game_Turn {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+}
+.Empty {
+    display: table-cell;
+    height: var(--Box-Size);
+    width: var(--Box-Size);
+    background-image: url("../Tile States/Blank.png");
+}
+.O {
+    display: table-cell;
+    height: var(--Box-Size);
+    width: var(--Box-Size);
+    background-image: url("../Tile States/Circle (2).png");
+}
+.X {
+    display: table-cell;
+    height: var(--Box-Size);
+    width: var(--Box-Size);
+    background-image: url("../Tile States/Cross.png");
+}
+.Empty:hover {
+    background-image: url("../Tile States/select.png");
+    background-color: white;
+}

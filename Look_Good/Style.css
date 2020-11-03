@@ -1,0 +1,88 @@
+:root {
+    --Width-Size: 100%;
+}
+.Header {
+    background-color: 	#F5F5F5;
+    height: 100px;
+    width: var(--Width-Size);
+    text-align: center;
+}
+.Bar {
+    height: 70px;
+    width: var(--Width-Size);
+    background-color: 		#696969;
+}
+.Main {
+    position: relative;
+    height: 1220px;
+    width: var(--Width-Size);
+}
+.Footer {
+    display: flex;
+    position: relative;
+    background-color:#484848;
+    height: 125px;
+    width: var(--Width-Size);
+}
+.Header h1 {
+    font-family: "Times New Roman";
+    font-size: 6em;
+    text-align: bottom;
+    display: inline;
+    color: #707070;
+}
+.Bar a{
+    float: left;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 30px;
+    padding: 18px 60px;
+}
+.Bar a:hover{
+    background-color: 	#404040;
+}
+.Footer-box {
+    position: relative;
+    height: 100px;
+    width: 98.5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Footer-box .media{
+    position: relative;
+    height: 75px;
+    width: 75px;
+    background-color: 	#282828;
+    float: right;
+    top: 12.5px;
+    left: -12.5px;
+    box-shadow: 5px 5px 5px;
+}
+.media .fa {
+    color: white;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    font-size: 60px;
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+}
+.Footer-box .Pages {
+    float: left;
+    position: relative;
+    height: 100%;
+    width: 300px;
+}
+.Footer-box .Pages p{
+    text-align: center;
+    color: 	#A0A0A0;
+    font-size: 20px;
+}
+.Footer-box .Pages .Contact{
+    color: 	#B8B8B8;
+    font-size: 24px;
+}

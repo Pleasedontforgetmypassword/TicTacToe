@@ -1,0 +1,6 @@
+.Main {
+    background-image: linear-gradient(to top, #ffcc66 0%, #ff6666 100%);
+}
+.Bar a.Active{
+    background-color:  #ff6666;
+} 

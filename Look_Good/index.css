@@ -1,0 +1,34 @@
+.Main {
+    background-image: linear-gradient(to bottom, #6699ff 0%, #9933ff 100%);
+}
+.Bar a.Active{
+    background-color:  #6699ff;
+}
+.Text-Box {
+    width: 600px;
+    height: 1100px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Circle {
+    border-radius: 50%;
+    position: relative;
+    width: 550px;
+    height: 550px;
+    overflow: hidden;
+    left: 50%;
+    transform: translate(-50%)
+}
+.Circle img {
+    position: relative;
+    height: 100%;
+    width: auto;
+}
+.Text-Box h1 {
+    font-family: "Times New Roman";
+    font-size: 5em;
+    text-align: center;
+    color: #ffcccc;
+}

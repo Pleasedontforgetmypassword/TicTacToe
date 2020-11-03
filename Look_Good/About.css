@@ -1,0 +1,72 @@
+.Main {
+    background-image: linear-gradient(to bottom,#B8B8B8 0%, 	#585858 100%);
+}
+.Bar a.Active{
+    background-color:  	#B8B8B8;
+} 
+.Text-Box {
+    display: flex;
+    position: relative;
+    height: 1150px;
+    width: 1100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Text-Box .Half {
+    height: 1150px;
+    width: 550px; 
+}
+.Half #First {
+    position: relative;
+    float: left;
+}
+.Half #Second {
+    position: relative;
+    float: right;
+}
+.Half .Inside {
+    position: relative;
+    height: 1000px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.Half .Circle {
+    border-radius: 50%;
+    position: relative;
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    left: 50%;
+    transform: translate(-50%)
+}
+.Circle img {
+    position: relative;
+    height: 100%;
+    width: auto;
+}
+.Inside .Text {
+    text-align: center;
+    color: 		#D0D0D0;
+}
+.Text h2 {
+    color: #202020;
+    font-size: 24px;
+}
+.Text a {
+    text-decoration: none;
+    color: #202020;
+}
+.Text table, tr, td {
+    border: 2px solid 	#484848;
+    border-collapse: collapse;
+}
+.Text table tr {
+    background-color: 	#585858;
+}
+.Text table tr:nth-child(even) {
+    background-color: #808080;
+}
