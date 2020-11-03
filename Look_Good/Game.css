@@ -104,6 +104,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: whitesmoke;
+    height: 130px;
+    width: 130px;
 }
 .Empty {
     display: table-cell;
@@ -126,4 +128,10 @@
 .Empty:hover {
     background-image: url("../Tile States/select.png");
     background-color: white;
+}
+.X-Turn {
+    background-image: url("../Players/X turn (2).png");
+}
+.O-Turn {
+    background-image: url("../Players/O turn (2).png");
 }

@@ -32,9 +32,9 @@ const Check = () => {
 // Gets the image turn
 const Switch_Turn = con => {
     if (con){
-        return "../Players/X turn (2).png"
+        return "X-Turn"
     }else{
-        return "../Players/O turn (2).png"
+        return "O-Turn"
     }
 }
 
@@ -78,7 +78,7 @@ for (let j = 0; j < Tiles.length; j++)
                 Turn_Image = Switch_Turn(TicTacToe.Player_Turn)
             }
             console.log(TicTacToe.Find_Moves())
-            document.getElementById("Game_Turn").src = Turn_Image
+            document.getElementById("Game_Turn").className = Turn_Image
             Check()
         }else{
             // DO nothing
