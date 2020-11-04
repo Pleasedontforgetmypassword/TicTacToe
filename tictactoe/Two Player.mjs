@@ -7,92 +7,134 @@ let TicTacToe = new Game_board([[0, 0, 0],
 
 let Visual_Board = new Image(TicTacToe.Board)
 
-const Update_Score = () => {
+const Pass = () => {
+    let Turn = document.getElementById("Game_Turn")
+
+    if (TicTacToe.Player_Turn){
+
+        Turn.className = "X-Turn"
+
+    }else{
+
+        Turn.className = "O-Turn"
+
+    }
+}
+
+
+const End = () => {
+    if (TicTacToe.Check_Win() || !TicTacToe.Empty()){
+        return true
+    }
+    return false
+}
+
+
+const Score = () => {
+
     document.getElementById("X").innerHTML = TicTacToe.Score["X"]
+
     document.getElementById("O").innerHTML = TicTacToe.Score["O"]
+
+    document.getElementById("Matches").innerHTML = TicTacToe.Score["Matches"]
+
+    document.getElementById("Tie").innerHTML = TicTacToe.Score["Matches"] - (TicTacToe.Score["X"] + TicTacToe.Score["O"])
 }
 
 
 const Check = () => {
-    if (TicTacToe.Check_Win()){
-        TicTacToe.Score.Matches += 1
+
+    if (End()){
+
+        TicTacToe.Score["Matches"] += 1
+
         if (TicTacToe.Check_Win()){
+
             if (!TicTacToe.Player_Turn){
-                TicTacToe.Score.X += 1
+
+                TicTacToe.Score["X"] += 1
+
             }else{
-                TicTacToe.Score.O += 1
+
+                TicTacToe.Score["O"] += 1
             }
+
         }
+
         TicTacToe.End = true
-        Update_Score()
-    }  
-}
 
-
-// Gets the image turn
-const Switch_Turn = con => {
-    if (con){
-        return "X-Turn"
-    }else{
-        return "O-Turn"
+        Score()
     }
 }
 
-// Update the visual
-const Update_Board = id => {
-    // Get the value of the location 
-     let Value = Visual_Board.Link()[id]
-    // Switch the state
+
+const Update = (id) => {
+
+    let Value = Visual_Board.Link()[id]
+
     document.getElementById(id).className = Visual_Board.State(Value)
 }
 
 
-// Get all the tiles that are empty
-let Tiles = document.getElementsByClassName("Empty");
-// Give all the tiles a event
-for (let j = 0; j < Tiles.length; j++)
-{
-    let Identity = Tiles[j].id
+const Refresh = () => {
 
-    Tiles[j].addEventListener("click", () => {
-        let Turn_Image;
-        // Get location
-        let Location = TicTacToe.Location[Identity]
-        // Check if it is the players turn
-        if (TicTacToe.Board[Location[0]][Location[1]] == 0 && TicTacToe.End == false){
+    for (let o = 1; o < 10; o++){
+
+        Update(o)
+    }
+}
+
+
+let Tiles = document.getElementsByClassName("Empty");
+
+
+for (let r = 0; r < Tiles.length; r++){
+
+    let Identity = Tiles[r].id
+
+    Tiles[r].addEventListener("click", () => {
+
+        let Locat = TicTacToe.Location[Identity]
+
+        if (TicTacToe.Board[Locat[0]][Locat[1]] == 0 && TicTacToe.End == false){
+
             if (TicTacToe.Player_Turn){
-                // Play the move
-                TicTacToe.Play_Move(Location[0], Location[1], 1)
-                // Update board
-                Update_Board(Identity)
-                // Passes the turn
+
+                TicTacToe.Play_Move(Locat[0], Locat[1], 1)
+
+                Update(Identity)
+
                 TicTacToe.Switch()
-                Turn_Image = Switch_Turn(TicTacToe.Player_Turn)
+
+                Pass()
+
             }else{
-                // Play the move
-                TicTacToe.Play_Move(Location[0], Location[1], 2)
-                // Update board
-                Update_Board(Identity)
-                // Passes the turn
+
+                TicTacToe.Play_Move(Locat[0], Locat[1], 2)
+
+                Update(Identity)
+
                 TicTacToe.Switch()
-                Turn_Image = Switch_Turn(TicTacToe.Player_Turn)
+
+                Pass()
             }
-            console.log(TicTacToe.Find_Moves())
-            document.getElementById("Game_Turn").className = Turn_Image
             Check()
-        }else{
-            // DO nothing
         }
+
     })
 }
 
+
 document.getElementsByClassName("Resets")[0].addEventListener("click", () => {
+
     TicTacToe.Player_Turn = true
+
     TicTacToe.End = false
+
     TicTacToe.Reset()
-    let Turn_Image = Switch_Turn(TicTacToe.Player_Turn)
-    document.getElementById("Game_Turn").src = Turn_Image
-    for (let j = 0; j < 9; j++){
-        Update_Board(j+1)
-    }
+
+    Pass()
+
+    Refresh()
 })
+

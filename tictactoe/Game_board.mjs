@@ -6,7 +6,7 @@ export default class Game_board{
         this.Score = {
             X: 0,
             O: 0,
-            Matches: 0,
+            Matches: 0
         }
         this.Location = {
             "1": [0, 0],
@@ -21,7 +21,6 @@ export default class Game_board{
         }
         this.Player_Turn = true;
         this.End = false;
-        this.Tie = this.Score.Matches - (this.Score.O + this.Score.X)
     }
     Find_Moves(){
         // Possible moves will be stored in this array
@@ -89,6 +88,16 @@ export default class Game_board{
         }else{
             this.Player_Turn = true
         }
+    }
+    Empty(){
+        for (let b = 0; b < this.Board.length; b++){
+            for (let g = 0; g < this.Board[b].length; g++){
+                if (this.Board[b][g] == 0){
+                    return true
+                }
+            }
+        }
+        return false
     }
 }
 // 0 empty
