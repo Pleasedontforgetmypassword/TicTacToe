@@ -40,6 +40,10 @@ const Score = () => {
     document.getElementById("Matches").innerHTML = TicTacToe.Score["Matches"]
 
     document.getElementById("Tie").innerHTML = TicTacToe.Score["Matches"] - (TicTacToe.Score["X"] + TicTacToe.Score["O"])
+
+    document.getElementById("X-Rate").innerHTML = `${((TicTacToe.Score["X"]/TicTacToe.Score["Matches"])*100).toFixed(2)}%`
+
+    document.getElementById("O-Rate").innerHTML = `${((TicTacToe.Score["O"]/TicTacToe.Score["Matches"])*100).toFixed(2)}%`
 }
 
 

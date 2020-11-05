@@ -45,6 +45,10 @@ const Score = () => {
     document.getElementById("Matches").innerHTML = TicTacToe.Score["Matches"]
 
     document.getElementById("Tie").innerHTML = TicTacToe.Score["Matches"] - (TicTacToe.Score["X"] + TicTacToe.Score["O"])
+
+    document.getElementById("X-Rate").innerHTML = `${((TicTacToe.Score["X"]/TicTacToe.Score["Matches"])*100).toFixed(2)}%`
+
+    document.getElementById("O-Rate").innerHTML = `${((TicTacToe.Score["O"]/TicTacToe.Score["Matches"])*100).toFixed(2)}%`
 }
 
 
@@ -118,7 +122,7 @@ for (let r = 0; r < Tiles.length; r++){
 
                 if (TicTacToe.End == false && !TicTacToe.Player_Turn){
 
-                    Robot.Random_Play(TicTacToe.Board, TicTacToe.Find_Moves(),2)
+                    Robot.Random_Play(TicTacToe.Board, TicTacToe.Find_Moves(), 2)
 
                     Refresh()
 
