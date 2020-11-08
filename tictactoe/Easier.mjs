@@ -163,7 +163,6 @@ const Best_Play = () => {
 
                 if (score > best){
                     best = score
-                    console.log(score)
                     move = [i, j]
                 }
             }
