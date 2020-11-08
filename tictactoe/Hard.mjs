@@ -12,6 +12,59 @@ let Visual_Board = new Image(TicTacToe.Board)
 
 let Robot = new Bot(TicTacToe.Board)
 
+const Minimax = (depth, Max) => {
+
+    let board = TicTacToe.Board
+    
+    if (Robot.Check(board)){
+        // X win = Bad
+        if (Robot.Win(board, 1)){
+            return -10 + depth
+
+        }else if (Robot.Win(board, 2)){
+            return 10 - depth
+
+        }else{
+            return 0
+        }
+    }
+    if (!Max){
+        let bestscore = -Infinity
+
+        for (let i = 0; i < 3; i++){
+            for (let j = 0; j < 3; j++){
+                if (board[i][j] == 0){
+                    board[i][j] = 2
+
+                    let score = Minimax(depth + 1, false)
+
+                    board[i][j] = 0
+
+                    bestscore = Math.max(score, bestscore)
+                }
+            }           
+        }
+        return bestscore
+
+    }else{
+        let bestscore = Infinity
+
+        for (let i = 0; i < 3; i++){
+            for (let j = 0; j < 3; j++){
+                if (board[i][j] == 0){
+                    board[i][j] = 1
+
+                    let score = Minimax(depth + 1, true)
+
+                    board[i][j] = 0
+
+                    bestscore = Math.min(score, bestscore)
+                }
+            }           
+        }
+        return bestscore
+    }
+}
 
 const Pass = () => {
     let Turn = document.getElementById("Game_Turn")
@@ -45,6 +98,10 @@ const Score = () => {
     document.getElementById("Matches").innerHTML = TicTacToe.Score["Matches"]
 
     document.getElementById("Tie").innerHTML = TicTacToe.Score["Matches"] - (TicTacToe.Score["X"] + TicTacToe.Score["O"])
+
+    document.getElementById("X-Rate").innerHTML = `${((TicTacToe.Score["X"]/TicTacToe.Score["Matches"])*100).toFixed(2)}%`
+
+    document.getElementById("O-Rate").innerHTML = `${((TicTacToe.Score["O"]/TicTacToe.Score["Matches"])*100).toFixed(2)}%`
 }
 
 
@@ -89,7 +146,32 @@ const Refresh = () => {
         Update(o)
     }
 }
+const Best_Play = () => {
+    let best = -Infinity
 
+    let move;
+
+    let Board = TicTacToe.Board
+    for (let i = 0; i < 3; i++){
+        for (let j = 0; j < 3; j++){
+            if (Board[i][j] == 0){
+                Board[i][j] = 2;
+
+                let score = Minimax(0, true)
+
+                Board[i][j] = 0;
+
+                if (score > best){
+                    best = score
+                    console.log(score)
+                    move = [i, j]
+                }
+            }
+        }
+    }
+    
+    Board[move[0]][move[1]] = 2
+}
 
 let Tiles = document.getElementsByClassName("Empty");
 
@@ -116,6 +198,19 @@ for (let r = 0; r < Tiles.length; r++){
 
                 Check()
 
+                if (TicTacToe.End == false && !TicTacToe.Player_Turn){
+
+                    Best_Play()
+
+                    TicTacToe.Switch()
+
+                    Refresh()
+
+                    Pass()
+
+                    Check()
+
+                }
             }
         }
 
@@ -131,8 +226,13 @@ document.getElementsByClassName("Resets")[0].addEventListener("click", () => {
 
     TicTacToe.Reset()
 
-    Pass()
+    Pass()  
+    
+    Robot.Random_Play(TicTacToe.Board, TicTacToe.Find_Moves(), 2)
 
     Refresh()
 })
 
+Robot.Random_Play(TicTacToe.Board, TicTacToe.Find_Moves(), 2)
+
+Refresh()
